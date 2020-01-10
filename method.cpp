@@ -1,6 +1,7 @@
 #include "DxLib.h"
 #include "method.h"
 #include "global.h"
+#include "mydef.h"
 
 
 
@@ -10,7 +11,7 @@ void MY_GAME_METHOD() {
 		GameSceneNow = GAME_SCENE_TITLE;//タイトル画面に戻る
 	}
 
-	DrawString(0, 0, "操作説明画面(タイトル画面に戻るにはMキーを押して下さい)", GetColor(255, 255, 255));
-
+	DrawRotaGraph(GAME_WIDTH / 2, GAME_HEIGHT / 2, 0.6, 0.0, LoadGraph("images/material/method.jpg"), FALSE);
+	
 	return;
 }

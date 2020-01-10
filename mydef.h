@@ -1,5 +1,5 @@
 #define GAME_WIDTH 800	//画面の横の大きさ
-#define GAME_HEIGHT 600	//画面の縦の大きさ
+#define GAME_HEIGHT 450	//画面の縦の大きさ
 #define GAME_COLOR 32	//画面のカラービット
 
 #define BACKGROUND_TITLE		//タイトル背景画像

@@ -29,7 +29,7 @@ BOOL MY_FPS_UPDATE() {
 
 void MY_FPS_DRAW() {
 	//•¶Žš—ñ‚ð•`‰æ
-	DrawFormatString(0, GAME_HEIGHT - 20, GetColor(255, 255, 255), "FPS:%.1f", MyFPS.count);
+	DrawFormatString(0, GAME_HEIGHT - 20, GetColor(0, 0, 255), "FPS:%.1f", MyFPS.Show);
 	return;
 }
 
