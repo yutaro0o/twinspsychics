@@ -21,3 +21,19 @@
 #define FPS_DISP 60
 
 #define TITLE_LOGO "images/material/logo.png"
+
+#define MAP_CSV_TEST "maptest.csv"
+#define MAP_TEST "sabaku.png"
+
+#define MAP_TILE_YOKO 24
+#define MAP_TILE_TATE 14
+
+#define MAP_TILE_SIZE_YOKO 32
+#define MAP_TILE_SIZE_TATE 32
+
+#define TILE_YOKO  1
+#define TILE_TATE 5
+
+
+
+

@@ -146,10 +146,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\参考プログラム.cpp" />
     <ClCompile Include="fps.cpp" />
     <ClCompile Include="global.cpp" />
     <ClCompile Include="key.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="map.cpp" />
     <ClCompile Include="method.cpp" />
     <ClCompile Include="play.cpp" />
     <ClCompile Include="inventory.cpp" />
@@ -162,6 +164,7 @@
     <ClInclude Include="global.h" />
     <ClInclude Include="inventory.h" />
     <ClInclude Include="key.h" />
+    <ClInclude Include="map.h" />
     <ClInclude Include="method.h" />
     <ClInclude Include="mydef.h" />
     <ClInclude Include="play.h" />

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "dxlib.h"
 
 int AllKeyState[256];	//ÉLÅ[èÛë‘ÇÃäiî[
 
@@ -9,3 +10,4 @@ int CountFps;
 float CalcFps;
 int SampleNumFps;
 
+FILE *fp_map_csv;
