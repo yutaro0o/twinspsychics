@@ -25,15 +25,19 @@
 #define MAP_CSV_TEST "maptest.csv"
 #define MAP_TEST "sabaku.png"
 
-#define MAP_TILE_YOKO 24
-#define MAP_TILE_TATE 14
+#define MAP_SIZE_YOKO 24  //マップの横の大きさ
+#define MAP_SIZE_TATE 14  //マップの縦の大きさ
 
-#define MAP_TILE_SIZE_YOKO 32
-#define MAP_TILE_SIZE_TATE 32
+#define TILE_SIZE_YOKO 32 //タイルの横のサイズ
+#define TILE_SIZE_TATE 32 //タイルの縦のサイズ
 
-#define TILE_YOKO  1
-#define TILE_TATE 5
+#define TILE_YOKO  1 //タイルの横の分割数
+#define TILE_TATE 5 //タイルの縦の分割数
 
-
+#define MAP_NOTDOWN_KIND 1
+#define MAP_NOTUP_KIND 1
+#define MAP_NOTLEFT_KIND 1
+#define MAP_NOTRIGHT_KIND 1
+#define MAP_ITEM_KIND 1
 
 

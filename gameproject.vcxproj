@@ -146,7 +146,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\参考プログラム.cpp" />
     <ClCompile Include="fps.cpp" />
     <ClCompile Include="global.cpp" />
     <ClCompile Include="key.cpp" />
