@@ -5,7 +5,7 @@
 #include "map.h"
 
 void MY_GAME_PLAY() {
-	if (CheckHitKey(KEY_INPUT_BACK) == 1)//エンターキーが押されていた時
+	if (CheckHitKey(KEY_INPUT_BACK) == 1)//バックスペースキーが押されていた時
 	{
 		GameSceneNow = GAME_SCENE_END;//シーンをプレイ画面にする
 	}

@@ -4,7 +4,6 @@
 #include "mydef.h"
 
 
-
 void MY_GAME_METHOD() {
 	if (CheckHitKey(KEY_INPUT_M) == 1)//MƒL[‚ª‰Ÿ‚³‚ê‚Ä‚¢‚½
 	{
