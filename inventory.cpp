@@ -5,7 +5,7 @@
 
 void MY_GAME_INVENTORY() {
 
-	if (AllKeyState[KEY_INPUT_M] != 0)//Mキーが押されたとき
+	if (CheckHitKey(KEY_INPUT_M) == 1)//Mキーが押されたとき
 	{
 		GameSceneNow = GAME_SCENE_PLAY;//シーンをプレイ画面にする
 	}

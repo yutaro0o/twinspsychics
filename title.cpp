@@ -4,11 +4,11 @@
 #include "mydef.h"
 
 void MY_GAME_TITLE() {
-	if (AllKeyState[KEY_INPUT_RETURN] != 0)//エンターキーが押されていた時
+	if (CheckHitKey(KEY_INPUT_RETURN) == 1)//エンターキーが押されていた時
 	{
 		GameSceneNow = GAME_SCENE_PLAY;//シーンをプレイ画面にする
 	}
-	if (AllKeyState[KEY_INPUT_V] != 0)//Vキーが押されたとき
+	if (CheckHitKey(KEY_INPUT_V) == 1)//Vキーが押されたとき
 	{
 		SetBackgroundColor(0, 0, 0);
 		GameSceneNow = GAME_SCENE_METHOD;//シーンを操作説明画面にする
