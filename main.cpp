@@ -1,5 +1,7 @@
 ﻿#include "DxLib.h"
 #include "mydef.h"
+#include "global.h"
+#include "map.h"
 #include "fps.h"
 #include "key.h"
 #include "title.h"
@@ -7,7 +9,7 @@
 #include "play.h"
 #include "inventory.h"
 #include "end.h"
-#include "global.h"
+
 
 
 typedef struct STRUCT_GAZOU {
@@ -29,6 +31,8 @@ GAZOU Method;
 GAZOU Play;
 GAZOU Inventory;
 GAZOU End;
+
+MAP MapImage;
 
 BOOL IsWM_CREATE = FALSE; //WM_CREATEが正常に動作したか判断する
 
@@ -57,6 +61,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLibe
 	if (DxLib_Init() == -1) { return -1; }//DXライブラリ初期化処理
 
 	SetDrawScreen(DX_SCREEN_BACK);//Draw系関数は裏画面に描画
+
+	if (MY_MAP_READ_CSV_NUM(fp_map_csv, MAP_CSV_TEST) == FALSE) { MessageBox(NULL, MAP_CSV_TEST, "NotFound", MB_OK); return -1; }
+
+	if (MY_MAP_LOAD_BUNKATSU(&MapImage, TILE_YOKO * TILE_TATE, TILE_YOKO, TILE_TATE, TILE_SIZE_YOKO, TILE_SIZE_TATE, MAP_TEST) == FALSE) { MessageBox(NULL, MAP_TEST, "NotFound", MB_OK); return -1; }
 
 	//無限ループ
 	while (TRUE)

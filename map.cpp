@@ -12,27 +12,6 @@ int MapNotLeftKind[MAP_NOTLEFT_KIND] = {};
 int MapNotRightKind[MAP_NOTRIGHT_KIND] = {};
 int MapItemKind[MAP_ITEM_KIND] = {};
 
-struct STRUCT_MAP
-{
-	char FilePath[128];//ファイルのパス
-	int Handle[TILE_YOKO * TILE_TATE];
-	int X[TILE_YOKO * TILE_TATE];
-	int Y[TILE_YOKO * TILE_TATE];
-	int Width[TILE_YOKO * TILE_TATE];
-	int Height[TILE_YOKO * TILE_TATE];
-	int C_Width[TILE_YOKO * TILE_TATE];
-	int C_Height[TILE_YOKO * TILE_TATE];
-
-	BOOL charaStopFlag;//キャラの移動制御フラグ
-	BOOL GoalFlg;//このマップをゴールしたか
-	int GameEndKind;//ゲーム終了の種類
-	BOOL GoalEffect1;//ゴールした時の演出1
-};
-
-typedef STRUCT_MAP MAP;
-
-MAP MapImage;
-
 int ScrollCntYoko = 0;
 
 //マップの当たり判定で行き止まりを作る(二行目は初期位置)
@@ -50,10 +29,6 @@ RECT rectMap_RightNG_First[MAP_SIZE_TATE][MAP_SIZE_YOKO];
 
 RECT rectMap_Item[MAP_SIZE_TATE][MAP_SIZE_YOKO];
 RECT rectMap_Item_First[MAP_SIZE_TATE][MAP_SIZE_YOKO];
-
-BOOL MY_MAP_READ_CSV_NUM(FILE *fp, const char *path);
-
-BOOL MY_MAP_LOAD_BUNKATSU(MAP *, int, int, int, int, int, const char *);
 
 
 //VOID MY_PLAY_ENEMY_MAP_COLLISION(ENEMY *);			//敵とマップとの接触関数
@@ -192,7 +167,7 @@ BOOL MY_MAP_LOAD_BUNKATSU(MAP *m, int bun_num, int bun_x_num, int bun_y_num, int
 	return TRUE;
 }
 
-VOID MY_PLAY_MAP_DRAW(VOID)
+void MY_PLAY_MAP_DRAW(void)
 {
 	//スクロールするマップを描画
 	for (int tate = 0; tate < MAP_SIZE_TATE; tate++)

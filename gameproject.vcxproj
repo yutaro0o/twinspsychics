@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -146,6 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="chara.cpp" />
     <ClCompile Include="fps.cpp" />
     <ClCompile Include="global.cpp" />
     <ClCompile Include="key.cpp" />
@@ -155,9 +156,11 @@
     <ClCompile Include="play.cpp" />
     <ClCompile Include="inventory.cpp" />
     <ClCompile Include="end.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="title.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="chara.h" />
     <ClInclude Include="end.h" />
     <ClInclude Include="fps.h" />
     <ClInclude Include="global.h" />
@@ -167,6 +170,7 @@
     <ClInclude Include="method.h" />
     <ClInclude Include="mydef.h" />
     <ClInclude Include="play.h" />
+    <ClInclude Include="player.h" />
     <ClInclude Include="title.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
