@@ -6,33 +6,24 @@
 
 int PlayerImageNum1[CHARA_MOTION_NUM] = {
 	0, 1, 2,
-	9, 10, 11,
-	18, 19, 20,
-	27, 28, 29
+	12, 13, 14,
+	24, 25, 26,
+	36, 37, 38
 };
 
 int PlayerImageNum2[CHARA_MOTION_NUM] = {
 	3, 4, 5,
-	12, 13, 14,
-	21, 22, 23,
-	30, 31, 32
+	15, 16, 17,
+	27, 28, 29,
+	39, 40, 41
 };
 
 
 PLAYER Myplayer;
 PLAYER Myplayer2;
 
-RECT rectMap_DownNG[MAP_TATE_NUM][MAP_YOKO_NUM];
-RECT rectMap_DownNG_First[MAP_TATE_NUM][MAP_YOKO_NUM];
-
-RECT rectMap_UpNG[MAP_TATE_NUM][MAP_YOKO_NUM];
-RECT rectMap_UpNG_First[MAP_TATE_NUM][MAP_YOKO_NUM];
-
-RECT rectMap_LeftNG[MAP_TATE_NUM][MAP_YOKO_NUM];
-RECT rectMap_LeftNG_First[MAP_TATE_NUM][MAP_YOKO_NUM];
-
-RECT rectMap_RightNG[MAP_TATE_NUM][MAP_YOKO_NUM];
-RECT rectMap_RightNG_First[MAP_TATE_NUM][MAP_YOKO_NUM];
+RECT rectMap_NG[MAP_TATE_NUM][MAP_YOKO_NUM];
+RECT rectMap_NG_First[MAP_TATE_NUM][MAP_YOKO_NUM];
 
 RECT rectMap_Item[MAP_TATE_NUM][MAP_YOKO_NUM];
 RECT rectMap_Item_First[MAP_TATE_NUM][MAP_YOKO_NUM];
@@ -112,7 +103,7 @@ void MY_PLAY_PLAYER_OPERATION(void)
 	//プレイヤーの移動した位置がマップ配列のどこにいるか変換※スクロールしてもプレイヤーの場所は同じだから
 	//int PlayerToMapNumX;
 
-	if (AllKeyState[KEY_INPUT_LEFT] != 0)//左矢印キーが押されていた時
+	if (AllKeyState[KEY_INPUT_A] != 0)//左矢印キーが押されていた時
 	{
 		IsKeyDown = TRUE;//キーを押された
 
@@ -139,7 +130,7 @@ void MY_PLAY_PLAYER_OPERATION(void)
 		Myplayer.atariRect.left -= 4;//少し、当たり判定の領域を左にずらす
 		Myplayer.atariRect.right -= 4;//少し、当たり判定の領域を左にずらす
 
-		if (MY_CHECK_RECT_ATARI_CHARA_MAP(Myplayer.atariRect, rectMap_LeftNG) == TRUE)//左に行けないものと当たった時
+		if (MY_CHECK_RECT_ATARI_CHARA_MAP(Myplayer.atariRect, rectMap_NG) == TRUE)//左に行けないものと当たった時
 		{
 			Myplayer.CanMoveLeft = FALSE;//左に行けない
 		}
@@ -158,7 +149,7 @@ void MY_PLAY_PLAYER_OPERATION(void)
 			}
 		}
 	}
-	if (AllKeyState[KEY_INPUT_RIGHT] != 0)//右矢印キーが押されていた時
+	if (AllKeyState[KEY_INPUT_D] != 0)//右矢印キーが押されていた時
 	{
 		IsKeyDown = TRUE;//キーを押された
 
@@ -187,7 +178,7 @@ void MY_PLAY_PLAYER_OPERATION(void)
 		Myplayer.atariRect.left += 4; //少し、プレイヤーの当たり判定の領域を右にずらす
 		Myplayer.atariRect.right += 4; //少し、プレイヤーの当たり判定の領域を右にずらす
 
-		if (MY_CHECK_RECT_ATARI_CHARA_MAP(Myplayer.atariRect, rectMap_RightNG) == TRUE)//右に行けないものと当たった時
+		if (MY_CHECK_RECT_ATARI_CHARA_MAP(Myplayer.atariRect, rectMap_NG) == TRUE)//右に行けないものと当たった時
 		{
 			Myplayer.CanMoveRight = FALSE;//右に行けない
 		}
@@ -208,7 +199,7 @@ void MY_PLAY_PLAYER_OPERATION(void)
 		}
 
 	}
-	if (AllKeyState[KEY_INPUT_UP] != 0)//上矢印キーが押されていた時
+	if (AllKeyState[KEY_INPUT_W] != 0)//上矢印キーが押されていた時
 	{
 		IsKeyDown = TRUE;//キーを押された
 
@@ -235,7 +226,7 @@ void MY_PLAY_PLAYER_OPERATION(void)
 		Myplayer.atariRect.top -= 4;//少し、当たり判定の領域を上にずらす
 		Myplayer.atariRect.bottom -= 4;//少し、当たり判定の領域を上にずらす
 
-		if (MY_CHECK_RECT_ATARI_CHARA_MAP(Myplayer.atariRect, rectMap_UpNG) == TRUE)//上に行けないものと当たった時
+		if (MY_CHECK_RECT_ATARI_CHARA_MAP(Myplayer.atariRect, rectMap_NG) == TRUE)//上に行けないものと当たった時
 		{
 			Myplayer.CanMoveUp = FALSE;//上に行けない
 		}
@@ -254,7 +245,7 @@ void MY_PLAY_PLAYER_OPERATION(void)
 			}
 		}
 	}
-	if (AllKeyState[KEY_INPUT_DOWN] != 0)//下矢印キーが押されていた時
+	if (AllKeyState[KEY_INPUT_S] != 0)//下矢印キーが押されていた時
 	{
 		IsKeyDown = TRUE;//キーを押された
 
@@ -283,7 +274,7 @@ void MY_PLAY_PLAYER_OPERATION(void)
 		Myplayer.atariRect.top += 4; //少し、プレイヤーの当たり判定の領域を下にずらす
 		Myplayer.atariRect.bottom += 4; //少し、プレイヤーの当たり判定の領域を下にずらす
 
-		if (MY_CHECK_RECT_ATARI_CHARA_MAP(Myplayer.atariRect, rectMap_DownNG) == TRUE)//下に行けないものと当たった時
+		if (MY_CHECK_RECT_ATARI_CHARA_MAP(Myplayer.atariRect, rectMap_NG) == TRUE)//下に行けないものと当たった時
 		{
 			Myplayer.CanMoveDown = FALSE;//下に行けない
 		}
@@ -306,6 +297,211 @@ void MY_PLAY_PLAYER_OPERATION(void)
 	}
 
 }
+
+void MY_PLAY_PLAYER_OPERATION2(void)
+{
+	BOOL IsKeyDown = FALSE;
+
+	//プレイヤーの位置がマップ配列のどこにいるか変換
+	//int PlayerToMapNumY;
+	//プレイヤーの移動した位置がマップ配列のどこにいるか変換※スクロールしてもプレイヤーの場所は同じだから
+	//int PlayerToMapNumX;
+
+	if (AllKeyState[KEY_INPUT_K] != 0)//左矢印キーが押されていた時
+	{
+		IsKeyDown = TRUE;//キーを押された
+
+		if (Myplayer2.NowHandleCnt < Myplayer2.NowHandleCntMAX)
+		{
+			Myplayer2.NowHandleCnt++;
+		}
+		else
+		{
+			Myplayer2.NowHandleCnt = 0;
+			if (Myplayer2.NowHandleNum >= 3 && Myplayer2.NowHandleNum < 5)
+			{
+				Myplayer2.NowHandleNum++; //次の左向きの画像
+			}
+			else
+			{
+				Myplayer2.NowHandleNum = 3;//一番最初の左向きの画像
+			}
+		}
+		//左方向にまだ動ける
+		Myplayer2.CanMoveLeft = TRUE;
+
+		MY_SET_PLAYER_ATARI(&Myplayer2);//プレイヤーの当たり判定の領域を設定
+		Myplayer2.atariRect.left -= 4;//少し、当たり判定の領域を左にずらす
+		Myplayer2.atariRect.right -= 4;//少し、当たり判定の領域を左にずらす
+
+		if (MY_CHECK_RECT_ATARI_CHARA_MAP(Myplayer2.atariRect, rectMap_NG) == TRUE)//左に行けないものと当たった時
+		{
+			Myplayer2.CanMoveLeft = FALSE;//左に行けない
+		}
+		if (Myplayer2.CanMoveLeft == TRUE)//左に移動できるとき
+		{
+			if (MapImage.charaStopFlag == FALSE)//プレイヤーが移動できるとき
+			{
+				if (Myplayer2.X > 0)
+				{
+					Myplayer2.X -= Myplayer2.Speed;//プレイヤーを左に移動
+				}
+			}
+			if (Myplayer2.MoveDist > 0)
+			{
+				Myplayer2.MoveDist -= Myplayer2.Speed;//動いた距離を計算
+			}
+		}
+	}
+	if (AllKeyState[KEY_INPUT_SEMICOLON] != 0)//右矢印キーが押されていた時
+	{
+		IsKeyDown = TRUE;//キーを押された
+
+		if (Myplayer2.NowHandleCnt < Myplayer2.NowHandleCntMAX)
+		{
+			Myplayer2.NowHandleCnt++;
+		}
+		else
+		{
+			Myplayer2.NowHandleCnt = 0;
+
+			if (Myplayer2.NowHandleNum >= 6 && Myplayer2.NowHandleNum < 8)
+			{
+				Myplayer2.NowHandleNum++;//次の右向きの画像
+			}
+			else
+			{
+				Myplayer2.NowHandleNum = 6;//一番最初の右向きの画像
+			}
+		}
+
+		//右方向に、まだ動ける
+		Myplayer2.CanMoveRight = TRUE;
+
+		MY_SET_PLAYER_ATARI(&Myplayer2);//プレイヤーの当たり判定の領域を設定
+		Myplayer2.atariRect.left += 4; //少し、プレイヤーの当たり判定の領域を右にずらす
+		Myplayer2.atariRect.right += 4; //少し、プレイヤーの当たり判定の領域を右にずらす
+
+		if (MY_CHECK_RECT_ATARI_CHARA_MAP(Myplayer2.atariRect, rectMap_NG) == TRUE)//右に行けないものと当たった時
+		{
+			Myplayer2.CanMoveRight = FALSE;//右に行けない
+		}
+		if (Myplayer2.CanMoveRight == TRUE)//右に移動できるとき
+		{
+			if (MapImage.charaStopFlag == FALSE)//プレイヤーが移動できるとき（開始位置）
+			{
+				if (Myplayer2.X + Myplayer2.Width < GAME_WIDTH)
+				{
+					Myplayer2.X += Myplayer2.Speed;//プレイヤーを右に移動
+				}
+			}
+
+			if (Myplayer2.MoveDist < MAP_SIZE_YOKO * MAP_YOKO_NUM)
+			{
+				Myplayer2.MoveDist += Myplayer2.Speed;//動いた距離を計算
+			}
+		}
+
+	}
+	if (AllKeyState[KEY_INPUT_O] != 0)//上矢印キーが押されていた時
+	{
+		IsKeyDown = TRUE;//キーを押された
+
+		if (Myplayer2.NowHandleCnt < Myplayer2.NowHandleCntMAX)
+		{
+			Myplayer2.NowHandleCnt++;
+		}
+		else
+		{
+			Myplayer2.NowHandleCnt = 0;
+			if (Myplayer2.NowHandleNum >= 9 && Myplayer2.NowHandleNum < 11)
+			{
+				Myplayer2.NowHandleNum++; //次の上向きの画像
+			}
+			else
+			{
+				Myplayer2.NowHandleNum = 9;//一番最初の上向きの画像
+			}
+		}
+		//上方向にまだ動ける
+		Myplayer2.CanMoveUp = TRUE;
+
+		MY_SET_PLAYER_ATARI(&Myplayer2);//プレイヤーの当たり判定の領域を設定
+		Myplayer2.atariRect.top -= 4;//少し、当たり判定の領域を上にずらす
+		Myplayer2.atariRect.bottom -= 4;//少し、当たり判定の領域を上にずらす
+
+		if (MY_CHECK_RECT_ATARI_CHARA_MAP(Myplayer2.atariRect, rectMap_NG) == TRUE)//上に行けないものと当たった時
+		{
+			Myplayer2.CanMoveUp = FALSE;//上に行けない
+		}
+		if (Myplayer2.CanMoveUp == TRUE)//左に移動できるとき
+		{
+			if (MapImage.charaStopFlag == FALSE)//プレイヤーが移動できるとき
+			{
+				if (Myplayer2.Y > 0)
+				{
+					Myplayer2.Y -= Myplayer2.Speed;//プレイヤーを上に移動
+				}
+			}
+			if (Myplayer2.MoveDist > 0)
+			{
+				Myplayer2.MoveDist -= Myplayer2.Speed;//動いた距離を計算
+			}
+		}
+	}
+	if (AllKeyState[KEY_INPUT_L] != 0)//下矢印キーが押されていた時
+	{
+		IsKeyDown = TRUE;//キーを押された
+
+		if (Myplayer2.NowHandleCnt < Myplayer2.NowHandleCntMAX)
+		{
+			Myplayer2.NowHandleCnt++;
+		}
+		else
+		{
+			Myplayer2.NowHandleCnt = 0;
+
+			if (Myplayer2.NowHandleNum >= 0 && Myplayer2.NowHandleNum < 2)
+			{
+				Myplayer2.NowHandleNum++;//次の右向きの画像
+			}
+			else
+			{
+				Myplayer2.NowHandleNum = 0;//一番最初の右向きの画像
+			}
+		}
+
+		//下方向に、まだ動ける
+		Myplayer2.CanMoveDown = TRUE;
+
+		MY_SET_PLAYER_ATARI(&Myplayer2);//プレイヤーの当たり判定の領域を設定
+		Myplayer2.atariRect.top += 4; //少し、プレイヤーの当たり判定の領域を下にずらす
+		Myplayer2.atariRect.bottom += 4; //少し、プレイヤーの当たり判定の領域を下にずらす
+
+		if (MY_CHECK_RECT_ATARI_CHARA_MAP(Myplayer2.atariRect, rectMap_NG) == TRUE)//下に行けないものと当たった時
+		{
+			Myplayer2.CanMoveDown = FALSE;//下に行けない
+		}
+		if (Myplayer2.CanMoveDown == TRUE)//下に移動できるとき
+		{
+			if (MapImage.charaStopFlag == FALSE)//プレイヤーが移動できるとき（開始位置）
+			{
+				if (Myplayer2.Y + Myplayer2.Height < GAME_HEIGHT)
+				{
+					Myplayer2.Y += Myplayer2.Speed;//プレイヤーを下に移動
+				}
+			}
+
+			if (Myplayer2.MoveDist < MAP_SIZE_TATE * MAP_TATE_NUM)
+			{
+				Myplayer2.MoveDist += Myplayer2.Speed;//動いた距離を計算
+			}
+		}
+
+	}
+
+}
+
 BOOL MY_CHECK_RECT_ATARI_CHARA_MAP_ATARIBASHO(RECT chara, RECT map[MAP_TATE_NUM][MAP_YOKO_NUM], int *atariX, int *atariY)
 {
 	for (int tate = 0; tate < MAP_TATE_NUM; tate++)
@@ -364,7 +560,7 @@ BOOL MY_CHECK_RECT_ATARI_CHARA_MAP(RECT chara, RECT map[MAP_TATE_NUM][MAP_YOKO_N
 	return FALSE;//当たってない
 }
 
-//プレイヤーを表示する関数
+//プレイヤー1を表示する関数
 void MY_PLAY_PLAYER_DRAW(void)
 {
 	//プレイヤーを拡大して描画
@@ -375,6 +571,19 @@ void MY_PLAY_PLAYER_DRAW(void)
 		Myplayer.Y + Myplayer.Height,
 		Myplayer.Handle[Myplayer.NowHandleNum], TRUE);
 	
+	return;
+}
+//プレイヤー2を表示する関数
+void MY_PLAY_PLAYER_DRAW2(void)
+{
+	//プレイヤーを拡大して描画
+	DrawExtendGraph(
+		Myplayer2.X,
+		Myplayer2.Y,
+		Myplayer2.X + Myplayer2.Width,
+		Myplayer2.Y + Myplayer2.Height,
+		Myplayer2.Handle[Myplayer.NowHandleNum], TRUE);
+
 	return;
 }
 

@@ -34,21 +34,19 @@
 #define TILE_YOKO  1 //タイルの横の分割数
 #define TILE_TATE 5 //タイルの縦の分割数
 
-#define MAP_NOTDOWN_KIND 1
-#define MAP_NOTUP_KIND 1
-#define MAP_NOTLEFT_KIND 1
-#define MAP_NOTRIGHT_KIND 1
+#define MAP_NG_KIND 1
+#define MAP_GOAL_KIND 1
 #define MAP_ITEM_KIND 1
 
 #define CHARA_1 "images/chara/chara1.png" //キャラ画像
 
-#define CHARA_YOKO_NUM 9 //キャラの横の分割数
-#define CHARA_TATE_NUM 5 //キャラの縦の分割数
+#define CHARA_YOKO_NUM 12 //キャラの横の分割数
+#define CHARA_TATE_NUM 8 //キャラの縦の分割数
 
 #define CHARA_MOTION_NUM 12 //キャラの画像数
 
-#define CHARA_SIZE_YOKO 48 //キャラの幅
-#define CHARA_SIZE_TATE 48 //キャラの高さ
+#define CHARA_SIZE_YOKO 32 //キャラの幅
+#define CHARA_SIZE_TATE 32 //キャラの高さ
 
 #define CHARA_KIND_YOKO 3 //キャラの横の種類
 #define CHARA_KIND_TATE 4 //キャラの縦の種類

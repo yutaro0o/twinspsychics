@@ -6,11 +6,6 @@
 
 int MapData[MAP_TATE_NUM][MAP_YOKO_NUM];
 int MapData_Init[MAP_TATE_NUM][MAP_YOKO_NUM];
-int MapNotDownKind[MAP_NOTDOWN_KIND] = {};
-int MapNotUpKind[MAP_NOTUP_KIND] = {};
-int MapNotLeftKind[MAP_NOTLEFT_KIND] = {};
-int MapNotRightKind[MAP_NOTRIGHT_KIND] = {};
-int MapItemKind[MAP_ITEM_KIND] = {};
 
 int ScrollCntYoko = 0;
 
@@ -49,7 +44,6 @@ int ScrollCntYoko = 0;
 //	}
 //}
 
-
 BOOL MY_MAP_READ_CSV_NUM(FILE *fp, const char *path)
 {
 	if ((fp = fopen(path, "r")) == NULL)
@@ -76,48 +70,48 @@ BOOL MY_MAP_READ_CSV_NUM(FILE *fp, const char *path)
 	{
 		for (int yoko = 0; yoko < MAP_YOKO_NUM; yoko++)
 		{
-			for (cnt = 0; cnt < MAP_NOTDOWN_KIND; cnt++)
+			for (cnt = 0; cnt < MAP_NG_KIND; cnt++)
 			{
-				if (MapData[tate][yoko] == MapNotDownKind[cnt])
+				if (MapData[tate][yoko] == MapNGKind[cnt])
 				{
-					rectMap_DownNG[tate][yoko].left = yoko * MAP_SIZE_YOKO + 1;
-					rectMap_DownNG[tate][yoko].top = tate * MAP_SIZE_TATE + 1;
-					rectMap_DownNG[tate][yoko].right = (yoko + 1) * MAP_SIZE_YOKO - 1;
-					rectMap_DownNG[tate][yoko].bottom = (tate + 1) * MAP_SIZE_TATE - 1;
-					rectMap_DownNG_First[tate][yoko] = rectMap_DownNG[tate][yoko];
+					rectMap_NG[tate][yoko].left = yoko * MAP_SIZE_YOKO + 1;
+					rectMap_NG[tate][yoko].top = tate * MAP_SIZE_TATE + 1;
+					rectMap_NG[tate][yoko].right = (yoko + 1) * MAP_SIZE_YOKO - 1;
+					rectMap_NG[tate][yoko].bottom = (tate + 1) * MAP_SIZE_TATE - 1;
+					rectMap_NG_First[tate][yoko] = rectMap_NG[tate][yoko];
 				}
 			}
-			for (cnt = 0; cnt < MAP_NOTLEFT_KIND; cnt++)
+			for (cnt = 0; cnt < MAP_NG_KIND; cnt++)
 			{
-				if (MapData[tate][yoko] == MapNotLeftKind[cnt])
+				if (MapData[tate][yoko] == MapNGKind[cnt])
 				{
-					rectMap_LeftNG[tate][yoko].left = yoko * MAP_SIZE_YOKO + 1;
-					rectMap_LeftNG[tate][yoko].top = tate * MAP_SIZE_TATE + 1;
-					rectMap_LeftNG[tate][yoko].right = (yoko + 1) * MAP_SIZE_YOKO - 1;
-					rectMap_LeftNG[tate][yoko].bottom = (tate + 1) * MAP_SIZE_TATE - 1;
-					rectMap_LeftNG_First[tate][yoko] = rectMap_LeftNG[tate][yoko];
+					rectMap_NG[tate][yoko].left = yoko * MAP_SIZE_YOKO + 1;
+					rectMap_NG[tate][yoko].top = tate * MAP_SIZE_TATE + 1;
+					rectMap_NG[tate][yoko].right = (yoko + 1) * MAP_SIZE_YOKO - 1;
+					rectMap_NG[tate][yoko].bottom = (tate + 1) * MAP_SIZE_TATE - 1;
+					rectMap_NG_First[tate][yoko] = rectMap_NG[tate][yoko];
 				}
 			}
-			for (cnt = 0; cnt < MAP_NOTRIGHT_KIND; cnt++)
+			for (cnt = 0; cnt < MAP_NG_KIND; cnt++)
 			{
-				if (MapData[tate][yoko] == MapNotRightKind[cnt])
+				if (MapData[tate][yoko] == MapNGKind[cnt])
 				{
-					rectMap_RightNG[tate][yoko].left = yoko * MAP_SIZE_YOKO + 1;
-					rectMap_RightNG[tate][yoko].top = tate * MAP_SIZE_TATE + 1;
-					rectMap_RightNG[tate][yoko].right = (yoko + 1) * MAP_SIZE_YOKO - 1;
-					rectMap_RightNG[tate][yoko].bottom = (tate + 1) * MAP_SIZE_TATE - 1;
-					rectMap_RightNG_First[tate][yoko] = rectMap_RightNG[tate][yoko];
+					rectMap_NG[tate][yoko].left = yoko * MAP_SIZE_YOKO + 1;
+					rectMap_NG[tate][yoko].top = tate * MAP_SIZE_TATE + 1;
+					rectMap_NG[tate][yoko].right = (yoko + 1) * MAP_SIZE_YOKO - 1;
+					rectMap_NG[tate][yoko].bottom = (tate + 1) * MAP_SIZE_TATE - 1;
+					rectMap_NG_First[tate][yoko] = rectMap_NG[tate][yoko];
 				}
 			}
-			for (cnt = 0; cnt < MAP_NOTUP_KIND; cnt++)
+			for (cnt = 0; cnt < MAP_NG_KIND; cnt++)
 			{
-				if (MapData[tate][yoko] == MapNotUpKind[cnt])
+				if (MapData[tate][yoko] == MapNGKind[cnt])
 				{
-					rectMap_UpNG[tate][yoko].left = yoko * MAP_SIZE_YOKO + 1;
-					rectMap_UpNG[tate][yoko].top = tate * MAP_SIZE_TATE + 1;
-					rectMap_UpNG[tate][yoko].right = (yoko + 1) * MAP_SIZE_YOKO - 1;
-					rectMap_UpNG[tate][yoko].bottom = (tate + 1) * MAP_SIZE_TATE - 1;
-					rectMap_UpNG_First[tate][yoko] = rectMap_UpNG[tate][yoko];
+					rectMap_NG[tate][yoko].left = yoko * MAP_SIZE_YOKO + 1;
+					rectMap_NG[tate][yoko].top = tate * MAP_SIZE_TATE + 1;
+					rectMap_NG[tate][yoko].right = (yoko + 1) * MAP_SIZE_YOKO - 1;
+					rectMap_NG[tate][yoko].bottom = (tate + 1) * MAP_SIZE_TATE - 1;
+					rectMap_NG_First[tate][yoko] = rectMap_NG[tate][yoko];
 				}
 			}
 		}

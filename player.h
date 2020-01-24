@@ -59,6 +59,7 @@ BOOL MY_CHARA_LOAD_BUNKATSU(CHARA*, int, int, int, int, int, const char *);//CHA
 BOOL MY_INIT_PLAYER(PLAYER *, CHARA, int *, int, int, int);//プレイヤーを初期化する関数
 
 void MY_PLAY_PLAYER_OPERATION(void);
+void MY_PLAY_PLAYER_OPERATION2(void);
 
 BOOL MY_CHECK_RECT_ATARI_CHARA_MAP_ATARIBASHO(RECT, RECT map[MAP_TATE_NUM][MAP_YOKO_NUM], int *, int *);
 
@@ -69,6 +70,7 @@ BOOL MY_CHECK_RECT_ATARI(RECT, RECT);//領域の当たり判定をする関数
 BOOL MY_CHECK_RECT_ATARI_CHARA_MAP(RECT, RECT[MAP_TATE_NUM][MAP_YOKO_NUM]);//マップとの当たり判定をする関数
 
 void MY_PLAY_PLAYER_DRAW(void);
+void MY_PLAY_PLAYER_DRAW2(void);
 
 BOOL MY_PLAY_INIT(void);
 

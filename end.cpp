@@ -1,7 +1,8 @@
 #include "DxLib.h"
 #include "end.h"
 #include "global.h"
-
+#include "map.h"
+#include "mydef.h"
 
 void MY_GAME_END() {
 	if (CheckHitKey(KEY_INPUT_DELETE) == 1)//デリートキーが押されていた時
