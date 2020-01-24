@@ -2,11 +2,23 @@
 #include "title.h"
 #include "global.h"
 #include "mydef.h"
+#include "map.h"
+#include "player.h"
 
 void MY_GAME_TITLE() {
 	if (CheckHitKey(KEY_INPUT_RETURN) == 1)//エンターキーが押されていた時
 	{
-		GameSceneNow = GAME_SCENE_PLAY;//シーンをプレイ画面にする
+		if (MY_PLAY_INIT() == TRUE)
+		{
+			for (int tate = 0; tate < MAP_TATE_NUM; tate++)
+			{
+				for (int yoko = 0; yoko < MAP_YOKO_NUM; yoko++)
+				{
+					MapData[tate][yoko] = MapData_Init[tate][yoko];	//マップをもとに戻す
+				}
+			}
+			GameSceneNow = GAME_SCENE_PLAY;//シーンをプレイ画面にする
+		}
 	}
 	if (CheckHitKey(KEY_INPUT_V) == 1)//Vキーが押されたとき
 	{

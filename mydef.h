@@ -25,11 +25,11 @@
 #define MAP_CSV_TEST "maptest.csv"
 #define MAP_TEST "sabaku.png"
 
-#define MAP_SIZE_YOKO 24  //マップの横の大きさ
-#define MAP_SIZE_TATE 14  //マップの縦の大きさ
+#define MAP_YOKO_NUM 24 //マップの横の大きさ
+#define MAP_TATE_NUM 14 //マップの縦の大きさ
 
-#define TILE_SIZE_YOKO 32 //タイルの横のサイズ
-#define TILE_SIZE_TATE 32 //タイルの縦のサイズ
+#define MAP_SIZE_YOKO 32 //タイルの横のサイズ
+#define MAP_SIZE_TATE 32 //タイルの縦のサイズ
 
 #define TILE_YOKO  1 //タイルの横の分割数
 #define TILE_TATE 5 //タイルの縦の分割数
@@ -40,4 +40,18 @@
 #define MAP_NOTRIGHT_KIND 1
 #define MAP_ITEM_KIND 1
 
+#define CHARA_1 "images/chara/chara1.png" //キャラ画像
+
+#define CHARA_YOKO_NUM 9 //キャラの横の分割数
+#define CHARA_TATE_NUM 5 //キャラの縦の分割数
+
+#define CHARA_MOTION_NUM 12 //キャラの画像数
+
+#define CHARA_SIZE_YOKO 48 //キャラの幅
+#define CHARA_SIZE_TATE 48 //キャラの高さ
+
+#define CHARA_KIND_YOKO 3 //キャラの横の種類
+#define CHARA_KIND_TATE 4 //キャラの縦の種類
+
+#define CHARA_SPEED 2 //キャラの動く速さ
 

@@ -2,6 +2,18 @@
 #define _MAP_H_
 #include "mydef.h"
 
+extern int MapData[MAP_TATE_NUM][MAP_YOKO_NUM];
+extern int MapData_Init[MAP_TATE_NUM][MAP_YOKO_NUM];
+
+enum MAP_IMAGE {
+	M_N = -1,		//MAP_NULLの意味
+	M_B = 19,		//MAP_BLANKの意味
+	M_G_T = 6,		//MAP_GROUND_TOPの意味
+	M_G_N = 38,		//MAP_GROUND_NAKAの意味
+	M_AM = 95,		//MAP_AMAZUNの意味
+	M_END = 399		//マップの終了
+};	//マップの列挙型
+
 struct STRUCT_MAP
 {
 	char FilePath[128];//ファイルのパス
@@ -28,5 +40,22 @@ BOOL MY_MAP_READ_CSV_NUM(FILE *fp, const char *path);
 BOOL MY_MAP_LOAD_BUNKATSU(MAP *, int, int, int, int, int, const char *);
 
 void MY_PLAY_MAP_DRAW(void);//マップを表示する関数
+
+//マップの当たり判定で行き止まりを作る(二行目は初期位置)
+extern RECT rectMap_DownNG[MAP_TATE_NUM][MAP_YOKO_NUM];
+extern RECT rectMap_DownNG_First[MAP_TATE_NUM][MAP_YOKO_NUM];
+
+extern RECT rectMap_UpNG[MAP_TATE_NUM][MAP_YOKO_NUM];
+extern RECT rectMap_UpNG_First[MAP_TATE_NUM][MAP_YOKO_NUM];
+
+extern RECT rectMap_LeftNG[MAP_TATE_NUM][MAP_YOKO_NUM];
+extern RECT rectMap_LeftNG_First[MAP_TATE_NUM][MAP_YOKO_NUM];
+
+extern RECT rectMap_RightNG[MAP_TATE_NUM][MAP_YOKO_NUM];
+extern RECT rectMap_RightNG_First[MAP_TATE_NUM][MAP_YOKO_NUM];
+
+extern RECT rectMap_Item[MAP_TATE_NUM][MAP_YOKO_NUM];
+extern RECT rectMap_Item_First[MAP_TATE_NUM][MAP_YOKO_NUM];
+
 
 #endif

@@ -4,8 +4,8 @@
 #include "mydef.h"
 #include "global.h"
 
-int MapData[MAP_SIZE_TATE][MAP_SIZE_YOKO];
-int MapData_Init[MAP_SIZE_TATE][MAP_SIZE_YOKO];
+int MapData[MAP_TATE_NUM][MAP_YOKO_NUM];
+int MapData_Init[MAP_TATE_NUM][MAP_YOKO_NUM];
 int MapNotDownKind[MAP_NOTDOWN_KIND] = {};
 int MapNotUpKind[MAP_NOTUP_KIND] = {};
 int MapNotLeftKind[MAP_NOTLEFT_KIND] = {};
@@ -13,23 +13,6 @@ int MapNotRightKind[MAP_NOTRIGHT_KIND] = {};
 int MapItemKind[MAP_ITEM_KIND] = {};
 
 int ScrollCntYoko = 0;
-
-//マップの当たり判定で行き止まりを作る(二行目は初期位置)
-RECT rectMap_DownNG[MAP_SIZE_TATE][MAP_SIZE_YOKO];
-RECT rectMap_DownNG_First[MAP_SIZE_TATE][MAP_SIZE_YOKO];
-
-RECT rectMap_UpNG[MAP_SIZE_TATE][MAP_SIZE_YOKO];
-RECT rectMap_UpNG_First[MAP_SIZE_TATE][MAP_SIZE_YOKO];
-
-RECT rectMap_LeftNG[MAP_SIZE_TATE][MAP_SIZE_YOKO];
-RECT rectMap_LeftNG_First[MAP_SIZE_TATE][MAP_SIZE_YOKO];
-
-RECT rectMap_RightNG[MAP_SIZE_TATE][MAP_SIZE_YOKO];
-RECT rectMap_RightNG_First[MAP_SIZE_TATE][MAP_SIZE_YOKO];
-
-RECT rectMap_Item[MAP_SIZE_TATE][MAP_SIZE_YOKO];
-RECT rectMap_Item_First[MAP_SIZE_TATE][MAP_SIZE_YOKO];
-
 
 //VOID MY_PLAY_ENEMY_MAP_COLLISION(ENEMY *);			//敵とマップとの接触関数
 //VOID MY_PLAY_MAP_DRAW(VOID);			//マップを表示する関数
@@ -78,9 +61,9 @@ BOOL MY_MAP_READ_CSV_NUM(FILE *fp, const char *path)
 	int LoopCnt = 0;
 	while (result != EOF)
 	{
-		result = fscanf(fp, "%d,", &MapData[LoopCnt / MAP_SIZE_YOKO][LoopCnt % MAP_SIZE_YOKO]);
+		result = fscanf(fp, "%d,", &MapData[LoopCnt / MAP_YOKO_NUM][LoopCnt % MAP_YOKO_NUM]);
 
-		MapData_Init[LoopCnt / MAP_SIZE_YOKO][LoopCnt % MAP_SIZE_YOKO] = MapData[LoopCnt / MAP_SIZE_YOKO][LoopCnt % MAP_SIZE_YOKO];
+		MapData_Init[LoopCnt / MAP_YOKO_NUM][LoopCnt % MAP_YOKO_NUM] = MapData[LoopCnt / MAP_YOKO_NUM][LoopCnt % MAP_YOKO_NUM];
 
 		LoopCnt++;
 	}
@@ -89,18 +72,18 @@ BOOL MY_MAP_READ_CSV_NUM(FILE *fp, const char *path)
 
 	int cnt;
 
-	for (int tate = 0; tate < MAP_SIZE_TATE; tate++)
+	for (int tate = 0; tate < MAP_TATE_NUM; tate++)
 	{
-		for (int yoko = 0; yoko < MAP_SIZE_YOKO; yoko++)
+		for (int yoko = 0; yoko < MAP_YOKO_NUM; yoko++)
 		{
 			for (cnt = 0; cnt < MAP_NOTDOWN_KIND; cnt++)
 			{
 				if (MapData[tate][yoko] == MapNotDownKind[cnt])
 				{
-					rectMap_DownNG[tate][yoko].left = yoko * TILE_SIZE_YOKO + 1;
-					rectMap_DownNG[tate][yoko].top = tate * TILE_SIZE_TATE + 1;
-					rectMap_DownNG[tate][yoko].right = (yoko + 1) * TILE_SIZE_YOKO - 1;
-					rectMap_DownNG[tate][yoko].bottom = (tate + 1) * TILE_SIZE_TATE - 1;
+					rectMap_DownNG[tate][yoko].left = yoko * MAP_SIZE_YOKO + 1;
+					rectMap_DownNG[tate][yoko].top = tate * MAP_SIZE_TATE + 1;
+					rectMap_DownNG[tate][yoko].right = (yoko + 1) * MAP_SIZE_YOKO - 1;
+					rectMap_DownNG[tate][yoko].bottom = (tate + 1) * MAP_SIZE_TATE - 1;
 					rectMap_DownNG_First[tate][yoko] = rectMap_DownNG[tate][yoko];
 				}
 			}
@@ -108,10 +91,10 @@ BOOL MY_MAP_READ_CSV_NUM(FILE *fp, const char *path)
 			{
 				if (MapData[tate][yoko] == MapNotLeftKind[cnt])
 				{
-					rectMap_LeftNG[tate][yoko].left = yoko * TILE_SIZE_YOKO + 1;
-					rectMap_LeftNG[tate][yoko].top = tate * TILE_SIZE_TATE + 1;
-					rectMap_LeftNG[tate][yoko].right = (yoko + 1) * TILE_SIZE_YOKO - 1;
-					rectMap_LeftNG[tate][yoko].bottom = (tate + 1) * TILE_SIZE_TATE - 1;
+					rectMap_LeftNG[tate][yoko].left = yoko * MAP_SIZE_YOKO + 1;
+					rectMap_LeftNG[tate][yoko].top = tate * MAP_SIZE_TATE + 1;
+					rectMap_LeftNG[tate][yoko].right = (yoko + 1) * MAP_SIZE_YOKO - 1;
+					rectMap_LeftNG[tate][yoko].bottom = (tate + 1) * MAP_SIZE_TATE - 1;
 					rectMap_LeftNG_First[tate][yoko] = rectMap_LeftNG[tate][yoko];
 				}
 			}
@@ -119,10 +102,10 @@ BOOL MY_MAP_READ_CSV_NUM(FILE *fp, const char *path)
 			{
 				if (MapData[tate][yoko] == MapNotRightKind[cnt])
 				{
-					rectMap_RightNG[tate][yoko].left = yoko * TILE_SIZE_YOKO + 1;
-					rectMap_RightNG[tate][yoko].top = tate * TILE_SIZE_TATE + 1;
-					rectMap_RightNG[tate][yoko].right = (yoko + 1) * TILE_SIZE_YOKO - 1;
-					rectMap_RightNG[tate][yoko].bottom = (tate + 1) * TILE_SIZE_TATE - 1;
+					rectMap_RightNG[tate][yoko].left = yoko * MAP_SIZE_YOKO + 1;
+					rectMap_RightNG[tate][yoko].top = tate * MAP_SIZE_TATE + 1;
+					rectMap_RightNG[tate][yoko].right = (yoko + 1) * MAP_SIZE_YOKO - 1;
+					rectMap_RightNG[tate][yoko].bottom = (tate + 1) * MAP_SIZE_TATE - 1;
 					rectMap_RightNG_First[tate][yoko] = rectMap_RightNG[tate][yoko];
 				}
 			}
@@ -130,10 +113,10 @@ BOOL MY_MAP_READ_CSV_NUM(FILE *fp, const char *path)
 			{
 				if (MapData[tate][yoko] == MapNotUpKind[cnt])
 				{
-					rectMap_UpNG[tate][yoko].left = yoko * TILE_SIZE_YOKO + 1;
-					rectMap_UpNG[tate][yoko].top = tate * TILE_SIZE_TATE + 1;
-					rectMap_UpNG[tate][yoko].right = (yoko + 1) * TILE_SIZE_YOKO - 1;
-					rectMap_UpNG[tate][yoko].bottom = (tate + 1) * TILE_SIZE_TATE - 1;
+					rectMap_UpNG[tate][yoko].left = yoko * MAP_SIZE_YOKO + 1;
+					rectMap_UpNG[tate][yoko].top = tate * MAP_SIZE_TATE + 1;
+					rectMap_UpNG[tate][yoko].right = (yoko + 1) * MAP_SIZE_YOKO - 1;
+					rectMap_UpNG[tate][yoko].bottom = (tate + 1) * MAP_SIZE_TATE - 1;
 					rectMap_UpNG_First[tate][yoko] = rectMap_UpNG[tate][yoko];
 				}
 			}
@@ -158,7 +141,7 @@ BOOL MY_MAP_LOAD_BUNKATSU(MAP *m, int bun_num, int bun_x_num, int bun_y_num, int
 			m->Handle[cnt],		//ハンドルから画像の幅と高さを取得して
 			&m->Width[cnt],		//MAP構造体の幅に画像の幅を設定する
 			&m->Height[cnt]);	//MAP構造体の逆さに画像の高さを設定する
-	
+
 		m->C_Width[cnt] = m->Width[cnt] / 2;		//画像の横サイズの中心を取得
 		m->C_Height[cnt] = m->Height[cnt] / 2;		//画像の縦サイズの中心を取得
 	}
@@ -170,16 +153,16 @@ BOOL MY_MAP_LOAD_BUNKATSU(MAP *m, int bun_num, int bun_x_num, int bun_y_num, int
 void MY_PLAY_MAP_DRAW(void)
 {
 	//スクロールするマップを描画
-	for (int tate = 0; tate < MAP_SIZE_TATE; tate++)
+	for (int tate = 0; tate < MAP_TATE_NUM; tate++)
 	{
-		for (int yoko = 0; yoko < MAP_SIZE_YOKO; yoko++)
+		for (int yoko = 0; yoko < MAP_YOKO_NUM; yoko++)
 		{
-			if ((yoko + 1) * TILE_SIZE_YOKO - ScrollCntYoko >= 0 &&
-				(yoko + 0) * TILE_SIZE_YOKO - ScrollCntYoko <= GAME_WIDTH)//画面に映っているならば
+			if ((yoko + 1) * MAP_SIZE_YOKO - ScrollCntYoko >= 0 &&
+				(yoko + 0) * MAP_SIZE_YOKO - ScrollCntYoko <= GAME_WIDTH)//画面に映っているならば
 			{
 				DrawGraph(
-					yoko * TILE_SIZE_YOKO - ScrollCntYoko,
-					tate * TILE_SIZE_TATE,
+					yoko * MAP_SIZE_YOKO - ScrollCntYoko,
+					tate * MAP_SIZE_TATE,
 					MapImage.Handle[MapData[tate][yoko]], TRUE);	//マップをスクロールしながら描画
 			}
 		}

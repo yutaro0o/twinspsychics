@@ -2,6 +2,7 @@
 #include "mydef.h"
 #include "global.h"
 #include "map.h"
+#include "player.h"
 #include "fps.h"
 #include "key.h"
 #include "title.h"
@@ -33,6 +34,9 @@ GAZOU Inventory;
 GAZOU End;
 
 MAP MapImage;
+CHARA CharaImage;
+PLAYER MyPlayer;
+PLAYER MyPlayer2;
 
 BOOL IsWM_CREATE = FALSE; //WM_CREATEが正常に動作したか判断する
 
@@ -64,7 +68,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLibe
 
 	if (MY_MAP_READ_CSV_NUM(fp_map_csv, MAP_CSV_TEST) == FALSE) { MessageBox(NULL, MAP_CSV_TEST, "NotFound", MB_OK); return -1; }
 
-	if (MY_MAP_LOAD_BUNKATSU(&MapImage, TILE_YOKO * TILE_TATE, TILE_YOKO, TILE_TATE, TILE_SIZE_YOKO, TILE_SIZE_TATE, MAP_TEST) == FALSE) { MessageBox(NULL, MAP_TEST, "NotFound", MB_OK); return -1; }
+	if (MY_MAP_LOAD_BUNKATSU(&MapImage, TILE_YOKO * TILE_TATE, TILE_YOKO, TILE_TATE, MAP_SIZE_YOKO, MAP_SIZE_TATE, MAP_TEST) == FALSE) { MessageBox(NULL, MAP_TEST, "NotFound", MB_OK); return -1; }
+
+	if (MY_CHARA_LOAD_BUNKATSU(&CharaImage, CHARA_YOKO_NUM * CHARA_TATE_NUM, CHARA_YOKO_NUM, CHARA_TATE_NUM, CHARA_SIZE_YOKO, CHARA_SIZE_TATE, CHARA_1) == FALSE) { MessageBox(NULL, CHARA_1, "NotFound", MB_OK); return -1; }//GAME_CHARA_1を読み込む
+
+
 
 	//無限ループ
 	while (TRUE)
@@ -106,6 +114,17 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLibe
 		ScreenFlip();//モニタのリフレッシュレートの速さで裏画面を再描画
 		MY_FPS_WAIT();//FPSの処理(待つ)
 	}
+
+	for (int mapCnt = 0; mapCnt < MAP_YOKO_NUM * MAP_TATE_NUM; mapCnt++)
+	{
+		DeleteGraph(MapImage.Handle[mapCnt]);//マップのハンドルを削除
+	}
+
+	for (int charaCnt = 0; charaCnt < CHARA_YOKO_NUM * CHARA_TATE_NUM; charaCnt++)
+	{
+		DeleteGraph(CharaImage.Handle[charaCnt]);//キャラのハンドルを削除
+	}
+
 	DxLib_End();//DXライブラリ使用の終了処理
 
 	return 0;
