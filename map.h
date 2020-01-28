@@ -5,9 +5,10 @@
 extern int MapData[MAP_TATE_NUM][MAP_YOKO_NUM];
 extern int MapData_Init[MAP_TATE_NUM][MAP_YOKO_NUM];
 
-static int MapNGKind[MAP_NG_KIND] = { 0 };
-static int MapItemKind[MAP_ITEM_KIND] = {0};
-static int MapGoalKind[MAP_GOAL_KIND] = {0};
+static int MapNGKind[MAP_NG_KIND] = { 2 };
+static int MapItemKind[MAP_ITEM_KIND] = {};
+static int MapGoalKind[MAP_GOAL_KIND] = {4};
+static int MapBeltKind[MAP_BELT_KIND] = {};
 
 enum MAP_IMAGE {
 	M_N = -1,		//MAP_NULL‚ÌˆÓ–¡

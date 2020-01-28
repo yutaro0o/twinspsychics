@@ -5,7 +5,7 @@
 #include "mydef.h"
 
 void MY_GAME_END() {
-	if (CheckHitKey(KEY_INPUT_DELETE) == 1)//デリートキーが押されていた時
+	if (AllKeyState[KEY_INPUT_RETURN] == 1)//エンターキーが押されていた時
 	{
 		GameSceneNow = GAME_SCENE_TITLE;
 	}

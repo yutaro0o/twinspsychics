@@ -5,7 +5,7 @@
 
 
 void MY_GAME_METHOD() {
-	if (CheckHitKey(KEY_INPUT_M) == 1)//Mキーが押されていた時
+	if (AllKeyState[KEY_INPUT_V] == 1)//Vキーが押されていた時
 	{
 		GameSceneNow = GAME_SCENE_TITLE;//タイトル画面に戻る
 	}

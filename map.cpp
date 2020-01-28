@@ -7,43 +7,6 @@
 int MapData[MAP_TATE_NUM][MAP_YOKO_NUM];
 int MapData_Init[MAP_TATE_NUM][MAP_YOKO_NUM];
 
-int ScrollCntYoko = 0;
-
-//VOID MY_PLAY_ENEMY_MAP_COLLISION(ENEMY *);			//敵とマップとの接触関数
-//VOID MY_PLAY_MAP_DRAW(VOID);			//マップを表示する関数
-//BOOL MY_CHECK_RECT_ATARI_CHARA_MAP(RECT, RECT[GAME_MAP_TATE][GAME_MAP_YOKO]);	//マップとの当たり判定をする関数
-//BOOL MY_CHECK_RECT_ATARI_CHARA_MAP_ATARIBASHO(RECT, RECT map[GAME_MAP_TATE][GAME_MAP_YOKO], int *, int *);
-//if (MY_MAP_READ_CSV_NUM(fp_map_csv, GAME_MAP_CSV_1) == FALSE) { MessageBox(NULL, GAME_MAP_CSV_1, "NotFound", MB_OK); return -1; }	//CSVを読み込む
-//if (MY_MAP_LOAD_BUNKATSU(&MapImage, GAME_MAP_BUN_YOKO_CNT * GAME_MAP_BUN_TATE_CNT, GAME_MAP_BUN_TATE_CNT, GAME_MAP_BUN_YOKO_CNT, 32, 32, GAME_MAP_1) == FALSE) { MessageBox(NULL, GAME_MAP_1, "NotFound", MB_OK); return -1; }	//MAPを読み込む
-//for (int mapCnt = 0; mapCnt < GAME_MAP_BUN_YOKO_CNT * GAME_MAP_BUN_TATE_CNT; mapCnt++)
-//{
-//	DeleteGraph(MapImage.Handle[mapCnt]);	//マップのハンドルを削除
-//}
-//for (int tate = 0; tate < GAME_MAP_TATE; tate++)
-//{
-//	for (int yoko = 0; yoko < GAME_MAP_YOKO; yoko++)
-//	{
-//		MapData[tate][yoko] = MapData_Init[tate][yoko];	//マップをもとに戻す
-//	}
-//}
-////プレイヤーの位置は、プレイヤーの中心
-//int PlayerToMapNumY = (Myplayer.Y + Myplayer.C_Height) / GAME_MAP_TATE_SIZE;
-//int PlayerToMapNumX = (Myplayer.MoveDist + Myplayer.C_Width) / GAME_MAP_TATE_SIZE;
-//
-//if (PlayerToMapNumX < 0 || PlayerToMapNumX > GAME_MAP_YOKO) { return FALSE; }	//マップの配列外でゴールになるバグを解消
-//if (PlayerToMapNumY < 0 || PlayerToMapNumY > GAME_MAP_TATE) { return FALSE; }	//マップの配列外でゴールになるバグを解消
-//
-//for (int G_Cnt = 0; G_Cnt < GAME_MAP_GOAL_KIND; G_Cnt++)
-//{
-//	//プレイヤーがゴールのモノと接触したとき
-//	if (MapData[PlayerToMapNumY][PlayerToMapNumX] == MapGoalKind[G_Cnt])
-//	{
-//		MapImage.GameEndKind = (int)END_KIND_CLEAR;		//ゲームクリア
-//		return TRUE;
-//		break;
-//	}
-//}
-
 BOOL MY_MAP_READ_CSV_NUM(FILE *fp, const char *path)
 {
 	if ((fp = fopen(path, "r")) == NULL)
@@ -74,42 +37,9 @@ BOOL MY_MAP_READ_CSV_NUM(FILE *fp, const char *path)
 			{
 				if (MapData[tate][yoko] == MapNGKind[cnt])
 				{
-					rectMap_NG[tate][yoko].left = yoko * MAP_SIZE_YOKO + 1;
+					rectMap_NG[tate][yoko].left = yoko * MAP_SIZE_YOKO - 1;
 					rectMap_NG[tate][yoko].top = tate * MAP_SIZE_TATE + 1;
-					rectMap_NG[tate][yoko].right = (yoko + 1) * MAP_SIZE_YOKO - 1;
-					rectMap_NG[tate][yoko].bottom = (tate + 1) * MAP_SIZE_TATE - 1;
-					rectMap_NG_First[tate][yoko] = rectMap_NG[tate][yoko];
-				}
-			}
-			for (cnt = 0; cnt < MAP_NG_KIND; cnt++)
-			{
-				if (MapData[tate][yoko] == MapNGKind[cnt])
-				{
-					rectMap_NG[tate][yoko].left = yoko * MAP_SIZE_YOKO + 1;
-					rectMap_NG[tate][yoko].top = tate * MAP_SIZE_TATE + 1;
-					rectMap_NG[tate][yoko].right = (yoko + 1) * MAP_SIZE_YOKO - 1;
-					rectMap_NG[tate][yoko].bottom = (tate + 1) * MAP_SIZE_TATE - 1;
-					rectMap_NG_First[tate][yoko] = rectMap_NG[tate][yoko];
-				}
-			}
-			for (cnt = 0; cnt < MAP_NG_KIND; cnt++)
-			{
-				if (MapData[tate][yoko] == MapNGKind[cnt])
-				{
-					rectMap_NG[tate][yoko].left = yoko * MAP_SIZE_YOKO + 1;
-					rectMap_NG[tate][yoko].top = tate * MAP_SIZE_TATE + 1;
-					rectMap_NG[tate][yoko].right = (yoko + 1) * MAP_SIZE_YOKO - 1;
-					rectMap_NG[tate][yoko].bottom = (tate + 1) * MAP_SIZE_TATE - 1;
-					rectMap_NG_First[tate][yoko] = rectMap_NG[tate][yoko];
-				}
-			}
-			for (cnt = 0; cnt < MAP_NG_KIND; cnt++)
-			{
-				if (MapData[tate][yoko] == MapNGKind[cnt])
-				{
-					rectMap_NG[tate][yoko].left = yoko * MAP_SIZE_YOKO + 1;
-					rectMap_NG[tate][yoko].top = tate * MAP_SIZE_TATE + 1;
-					rectMap_NG[tate][yoko].right = (yoko + 1) * MAP_SIZE_YOKO - 1;
+					rectMap_NG[tate][yoko].right = (yoko + 1) * MAP_SIZE_YOKO + 1;
 					rectMap_NG[tate][yoko].bottom = (tate + 1) * MAP_SIZE_TATE - 1;
 					rectMap_NG_First[tate][yoko] = rectMap_NG[tate][yoko];
 				}
@@ -151,13 +81,20 @@ void MY_PLAY_MAP_DRAW(void)
 	{
 		for (int yoko = 0; yoko < MAP_YOKO_NUM; yoko++)
 		{
-			if ((yoko + 1) * MAP_SIZE_YOKO - ScrollCntYoko >= 0 &&
-				(yoko + 0) * MAP_SIZE_YOKO - ScrollCntYoko <= GAME_WIDTH)//画面に映っているならば
+			if ((yoko + 1) * MAP_SIZE_YOKO >= 0 &&
+				(yoko + 0) * MAP_SIZE_YOKO <= GAME_WIDTH)//画面に映っているならば
 			{
 				DrawGraph(
-					yoko * MAP_SIZE_YOKO - ScrollCntYoko,
+					yoko * MAP_SIZE_YOKO,
 					tate * MAP_SIZE_TATE,
-					MapImage.Handle[MapData[tate][yoko]], TRUE);	//マップをスクロールしながら描画
+					MapImage.Handle[MapData[tate][yoko]], TRUE);
+
+				DrawBox(
+					rectMap_NG[tate][yoko].left,
+					rectMap_NG[tate][yoko].top,
+					rectMap_NG[tate][yoko].right,
+					rectMap_NG[tate][yoko].bottom,
+					GetColor(255, 0, 0), FALSE);	//行けないマップ
 			}
 		}
 	}

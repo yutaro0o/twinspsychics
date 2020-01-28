@@ -6,7 +6,7 @@
 #include "player.h"
 
 void MY_GAME_TITLE() {
-	if (CheckHitKey(KEY_INPUT_RETURN) == 1)//エンターキーが押されていた時
+	if (AllKeyState[KEY_INPUT_RETURN] == 1)//エンターキーが押されていた時
 	{
 		if (MY_PLAY_INIT() == TRUE)
 		{
@@ -20,7 +20,7 @@ void MY_GAME_TITLE() {
 			GameSceneNow = GAME_SCENE_PLAY;//シーンをプレイ画面にする
 		}
 	}
-	if (CheckHitKey(KEY_INPUT_V) == 1)//Vキーが押されたとき
+	if (AllKeyState[KEY_INPUT_V] == 1)//Vキーが押されたとき
 	{
 		SetBackgroundColor(0, 0, 0);
 		GameSceneNow = GAME_SCENE_METHOD;//シーンを操作説明画面にする

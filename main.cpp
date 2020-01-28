@@ -11,8 +11,6 @@
 #include "inventory.h"
 #include "end.h"
 
-
-
 typedef struct STRUCT_GAZOU {
 	int Handle;			//画像のハンドル
 	char FilePath[128];	//ファイルパス
@@ -68,7 +66,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLibe
 
 	if (MY_MAP_READ_CSV_NUM(fp_map_csv, MAP_CSV_TEST) == FALSE) { MessageBox(NULL, MAP_CSV_TEST, "NotFound", MB_OK); return -1; }
 
-	if (MY_MAP_LOAD_BUNKATSU(&MapImage, TILE_YOKO * TILE_TATE, TILE_YOKO, TILE_TATE, MAP_SIZE_YOKO, MAP_SIZE_TATE, MAP_TEST) == FALSE) { MessageBox(NULL, MAP_TEST, "NotFound", MB_OK); return -1; }
+	if (MY_MAP_LOAD_BUNKATSU(&MapImage, TILE_YOKO * TILE_TATE, TILE_YOKO, TILE_TATE, MAP_SIZE_YOKO, MAP_SIZE_TATE, MAP_PNG) == FALSE) { MessageBox(NULL, MAP_PNG, "NotFound", MB_OK); return -1; }
 
 	if (MY_CHARA_LOAD_BUNKATSU(&CharaImage, CHARA_YOKO_NUM * CHARA_TATE_NUM, CHARA_YOKO_NUM, CHARA_TATE_NUM, CHARA_SIZE_YOKO, CHARA_SIZE_TATE, CHARA_1) == FALSE) { MessageBox(NULL, CHARA_1, "NotFound", MB_OK); return -1; }//GAME_CHARA_1を読み込む
 

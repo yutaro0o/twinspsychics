@@ -59,7 +59,6 @@ BOOL MY_CHARA_LOAD_BUNKATSU(CHARA*, int, int, int, int, int, const char *);//CHA
 BOOL MY_INIT_PLAYER(PLAYER *, CHARA, int *, int, int, int);//ÉvÉåÉCÉÑÅ[Çèâä˙âªÇ∑ÇÈä÷êî
 
 void MY_PLAY_PLAYER_OPERATION(void);
-void MY_PLAY_PLAYER_OPERATION2(void);
 
 BOOL MY_CHECK_RECT_ATARI_CHARA_MAP_ATARIBASHO(RECT, RECT map[MAP_TATE_NUM][MAP_YOKO_NUM], int *, int *);
 

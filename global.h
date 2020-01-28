@@ -10,3 +10,4 @@ enum GAME_SCENE {
 
 extern int GameSceneNow;
 
+
